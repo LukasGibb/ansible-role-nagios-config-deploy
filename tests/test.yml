@@ -1,0 +1,11 @@
+---
+- hosts: all
+  vars:  
+    nagios_config_deploy_repo_protocol: "https://"
+    nagios_config_deploy_repo_url: "github.com/LukasGibb/test-nagios-config"
+    nagios_config_deploy_repo_subfolder: "TestSubfolder/"
+    nagios_config_deploy_repo_override_subfolder: "TestSubfolder/TestOverrideSubfolder/"
+
+  roles:
+    - oefenweb.nagios-server
+    - role_under_test

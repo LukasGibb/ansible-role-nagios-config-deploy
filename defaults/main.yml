@@ -1,0 +1,43 @@
+---
+# defaults file for ansible-role-nagios-config-deploy
+
+###############################################################################
+# Git Repo Details
+###############################################################################
+
+# These variables must be passed and are used to build the URL to your repository
+# "https://", "ssh://" etc
+nagios_config_deploy_repo_protocol: "ssh://" 
+# Do not include the protocol in the URL ie 'https://'
+nagios_config_deploy_repo_url: "github.com/myusername/mynagiosconfig"
+# The directory where the git files will be checked out to
+nagios_config_deploy_path: "/etc/nagios-config-deploy/"
+
+###############################################################################
+# Nagios Config Details
+###############################################################################
+
+# The repo directory that contains your base nagios config files
+nagios_config_deploy_nag_dir: "nagios/"
+
+# The repo directory that contains more specific nagios config files
+# These files will be symlinked after the files in 'nagios_config_deploy_nag_dir'
+# overriding them.
+# eg. a US based server may have "nagios/us/" and the UK server would have "nagios/uk/"
+# You may also like to use the hostname for the override folder
+# eg. "nagios/nag01.yourdomain.com/"
+nagios_config_deploy_nag_override_dir: ""
+
+# The path that nagios looks in for it's config files
+# This is the directory that the files from your repo will be symlinked to
+# Warning: the original files in this folder will be deleted when symlinks are added.
+nagios_config_deploy_nagios_path: "/etc/nagios3/conf.d/"
+
+###############################################################################
+# Nagios Plugins Directory Details
+###############################################################################
+
+# The repo directory that contains your custom nagios plugin scripts
+nagios_config_deploy_plugins_dir: "plugins"
+# The path that nagios looks in for plugin files
+nagios_config_deploy_plugins_path: "/usr/lib/nagios/plugins/"

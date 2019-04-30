@@ -1,0 +1,48 @@
+---
+# tasks file for ansible-role-nagios-config-deploy
+
+- name: Install requirements via apt
+  apt:
+    name: "{{ packages }}"
+    state: present
+  vars:
+    packages:
+    - git
+    - git-lfs
+  register: my_result
+  until: my_result is succeeded
+  tags: nagios-config-deploy
+
+# Permissions set to 0777 so that they can be accessed by the user running git
+- name: Create directory for nagios config files
+  file:
+    path: "{{ nagios_config_deploy_path }}"
+    state: directory
+    mode: 0777
+  tags: nagios-config-deploy
+
+- name: Ensure Git LFS is installed
+  shell:
+    cat ~/.gitconfig | grep -q 'git-lfs'
+    && echo -n 'INSTALLED'
+    || git lfs install
+  register: git_lfs_result
+  changed_when: git_lfs_result.stdout != 'INSTALLED'
+  tags: nagios-config-deploy
+
+# This task runs 'become: no' so that the users SSH keys can be used to connect to the git repo
+- name: Git checkout from git repo
+  git:
+    repo: "{{ nagios_config_deploy_repo }}"
+    dest: "{{ nagios_config_deploy_path }}"
+    version: master
+  become: no
+  notify: 
+  - nagios find repo base files
+  - nagios symlink repo base files
+  - nagios find repo override files
+  - nagios symlink repo override files
+  - nagios check repo plugin files
+  - nagios symlink repo plugin files
+  - nagios reload
+  tags: nagios-config-deploy
