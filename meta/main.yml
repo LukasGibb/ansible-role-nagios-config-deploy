@@ -1,4 +1,5 @@
 galaxy_info:
+  role_name: nagios-config-deploy
   author: LukasGibb
   description: An Ansible role that deploys Nagios config and custom plugin files
   company: cloudjourneyman.com
