@@ -13,6 +13,7 @@ The role will also symlink directories containing custom 'sounds' and 'moh' file
 To use this option you should look into using Git LFS for storing the sound files. The role will install 
 git-lfs on the server for you.
 
+
 Nagios Config File Override System
 ----------------------------------
 
@@ -26,11 +27,13 @@ The path to the relevant subfolder can be set in a host variable (nagios_config_
 The role will deploy any server specific config files that are present instead of the more 'generic' files of the 
 same name in the main folder.
 
+
 Nagios Plugins
 ---------------
 
 Custom nagios plugin files can be added to a directory in the repo (default dir: plugins). This directory will be
 symlinked to the nagios plugins directory.
+
 
 Requirements
 ------------
@@ -42,10 +45,12 @@ can utilise your SSH keys without you having to leave your SSH keys on the nagio
 
 https://developer.github.com/v3/guides/using-ssh-agent-forwarding/
 
+
 Role Variables
 --------------
 
 See defaults/main.yml.
+
 
 Dependencies
 ------------
@@ -53,6 +58,7 @@ Dependencies
 No forced dependencies. Choose your preferred method of installing Nagios. You may wish to take a look at:
 
 https://galaxy.ansible.com/oefenweb/nagios-server
+
 
 Example Playbook
 ----------------
@@ -70,13 +76,15 @@ Obviously you will need to pass in your git repository details (not the example/
         - oefenweb.nagios-server
         - LukasGibb.nagios-config-deploy
 
+
 License
 -------
 
 MIT
 
+
 Author Information
 ------------------
 
 This role was created in 2019 by:
-[Lukas Gibb](https://github.com/LukasGibb) [CloudJourneyman.com](http://www.cloudjourneyman.com/)
+[Lukas Gibb](https://github.com/LukasGibb) from [CloudJourneyman.com](http://www.cloudjourneyman.com/)
