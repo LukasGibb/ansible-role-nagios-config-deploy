@@ -33,7 +33,7 @@
 
 - name: nagios check repo plugin files
   stat:
-    paths: "{{ nagios_config_deploy_plug_src }}
+    paths: "{{ nagios_config_deploy_plug_src }}"
     patterns: "*"
   register: find_plugins
 
