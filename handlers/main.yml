@@ -47,4 +47,4 @@
   notify: nagios reload
 
 - name: nagios reload
-  service: name=nagios state=restarted
+  service: name="{{ nagios_config_deploy_service_name }}" state=restarted
