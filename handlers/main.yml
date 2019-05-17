@@ -32,7 +32,7 @@
   notify: nagios reload
 
 - name: nagios check repo plugin files
-  stat:
+  find:
     paths: "{{ nagios_config_deploy_plug_src }}"
     patterns: "*"
   register: find_plugins
