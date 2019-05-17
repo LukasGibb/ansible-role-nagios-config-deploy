@@ -35,7 +35,7 @@
   find:
     paths: "{{ nagios_config_deploy_plug_src }}"
     patterns: "*"
-  register: find_plugins
+  register: find_plugin
 
 - name: nagios symlink repo plugin files
   file:
@@ -43,6 +43,7 @@
     dest: "{{ nagios_config_deploy_plugins_path }}{{ item.path | basename }}"
     state: link
     force: yes
+  with_items: "{{ find_plugin.files }}"
   notify: nagios reload
 
 - name: nagios reload
