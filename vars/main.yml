@@ -4,5 +4,5 @@
 # Concatenate variables to shorten them and make other code more readable (keeping under 120 chars per line)
 nagios_config_deploy_repo: "{{ nagios_config_deploy_repo_protocol }}{{ nagios_config_deploy_repo_url }}"
 nagios_config_deploy_base_src: "{{ nagios_config_deploy_path }}{{ nagios_config_deploy_nag_dir }}"
-nagios_config_deploy_or_src: "{{ nagios_config_deploy_path }}{{ nagios_config_deploy_ast_override_dir }}"
+nagios_config_deploy_or_src: "{{ nagios_config_deploy_path }}{{ nagios_config_deploy_nag_override_dir }}"
 nagios_config_deploy_plug_src: "{{ nagios_config_deploy_path }}{{ nagios_config_deploy_plugins_dir }}"
