@@ -45,6 +45,6 @@ nagios_config_deploy_nagios_path: "/etc/nagios3/conf.d/"
 ###############################################################################
 
 # The repo directory that contains your custom nagios plugin scripts
-nagios_config_deploy_plugins_dir: "plugins"
+nagios_config_deploy_plugins_dir: "plugins/"
 # The path that nagios looks in for plugin files
 nagios_config_deploy_plugins_path: "/usr/lib/nagios/plugins/"

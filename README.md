@@ -8,9 +8,9 @@ directory and then symlink these files into the nagios config directory.
 
 WARNING: This will delete your original nagios config files! Do not run on an existing server.
 
-The role will also symlink directories containing custom 'sounds' and 'moh' files.
+The role can also symlink custom plugin files.
 
-To use this option you should look into using Git LFS for storing the sound files. The role will install 
+To use this option you should look into using Git LFS for storing any larger plugin files. The role will install 
 git-lfs on the server for you.
 
 
@@ -18,10 +18,10 @@ Nagios Config File Override System
 ----------------------------------
 
 Config files specific to a particular server can be placed into a subfolder in the repository.
-This can help when you have a generic services/hostgroups but need to configure hosts for multiple 
+This can help when you have a generic set of services/hostgroups but need to configure hosts for multiple 
 regions/datacenters/customers.
 
-eg. Config files for the US PABX in "nagios/us/" and the UK PABX in "nagios/uk/"
+eg. Config files for the Dallas Datacentre in "nagios/dal09/" and Melbourne in "nagios/mel01/"
 
 The path to the relevant subfolder can be set in a host variable (nagios_config_deploy_nag_override_dir).
 The role will deploy any server specific config files that are present instead of the more 'generic' files of the 
@@ -31,8 +31,8 @@ same name in the main folder.
 Nagios Plugins
 ---------------
 
-Custom nagios plugin files can be added to a directory in the repo (default dir: plugins). This directory will be
-symlinked to the nagios plugins directory.
+Custom nagios plugin files can be added to a directory in the repo (default dir: plugins). Files in this directory 
+will be symlinked to the nagios plugins directory.
 
 
 Requirements
@@ -69,12 +69,12 @@ Obviously you will need to pass in your git repository details (not the example/
       vars: 
         nagios_config_deploy_repo_protocol: "ssh://" 
         nagios_config_deploy_repo_url: "github.com/myusername/myprivatenagiosconfigrepo"
-        nagios_config_deploy_repo_subfolder: "nagios-config"
-        nagios_config_deploy_repo_override_subfolder: "nagios-config/nag01"
+        nagios_config_deploy_repo_subfolder: "nagios/"
+        nagios_config_deploy_repo_override_subfolder: "nag01/"
       
       roles:
         - oefenweb.nagios-server
-        - LukasGibb.nagios-config-deploy
+        - LukasGibb.nagios_config_deploy
 
 
 License
