@@ -70,7 +70,7 @@ Obviously you will need to pass in your git repository details (not the example/
         nagios_config_deploy_repo_protocol: "ssh://" 
         nagios_config_deploy_repo_url: "github.com/myusername/myprivatenagiosconfigrepo"
         nagios_config_deploy_nag_dir: "nagios/"
-        nagios_config_deploy_nag_override_dir: "nag01/"
+        nagios_config_deploy_nag_override_dir: "nagios/nag01/"
       
       roles:
         - oefenweb.nagios-server
